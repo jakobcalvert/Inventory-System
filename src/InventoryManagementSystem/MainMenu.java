@@ -4,27 +4,53 @@
  */
 package InventoryManagementSystem;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
  * @author Jakob
  */
-public class MainMenu extends JPanel {
+public class MainMenu extends JFrame {
 
     private JButton exit;
     private JButton studentMode;
     private JButton staffMode;
     private AllStock model;
+    private JLabel Welcome;
 
     public MainMenu(AllStock model) {
+
         this.model = model;
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(Constants.FrameSize);
+        this.setVisible(true);
+        this.setResizable(false);
+        this.getContentPane().setLayout(null);
+        this.setBackground(Color.yellow);
+        this.setTitle("Inventory Management System");
+        
+        this.Welcome = new JLabel("Welcome to the inventory Management system select a mode to get started",SwingConstants.CENTER);
+        this.Welcome.setVisible(true);
+        this.Welcome.setSize(Constants.framex - 300, 100 );
+        this.Welcome.setLocation(Constants.framex/2, 100);
+        
+        
+
         this.studentMode = new JButton("Student Mode");
-        this.studentMode.setLocation(10, 10);
+        
+        this.studentMode.setSize(Constants.ButtonSize);
         this.studentMode.setVisible(true);
+        this.studentMode.setLocation(((Constants.framex/2) - 120) ,((Constants.framey/2)-20) );
+        
 
         this.add(studentMode);
 
@@ -35,13 +61,15 @@ public class MainMenu extends JPanel {
                 studentModeClick();
             }
         });
-        
+
         this.staffMode = new JButton("Staff Mode");
-        this.staffMode.setLocation(20, 10);
+        
+        this.staffMode.setSize(Constants.ButtonSize);
         this.staffMode.setVisible(true);
-
+        this.staffMode.setLocation((Constants.framex/2) + 120 , (Constants.framey/2)-20);
+       
         this.add(staffMode);
-
+       
         this.staffMode.addActionListener(new ActionListener() {
 
             @Override
@@ -49,15 +77,17 @@ public class MainMenu extends JPanel {
                 staffModeClick();
             }
         });
+        this.setVisible(true);
+    }
 
-    }
-    public void staffModeClick(){
+    public void staffModeClick() {
         StaffModePanel panel = new StaffModePanel(model);
-        Main.changePanel(panel);
+        this.dispose();
     }
-    public void studentModeClick(){
+
+    public void studentModeClick() {
         StaffModePanel panel = new StaffModePanel(model);
-        Main.changePanel(panel);
+        this.dispose();
     }
 
 }
