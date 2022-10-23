@@ -5,6 +5,7 @@
 package InventoryManagementSystem;
 
 import java.awt.Dimension;
+import java.awt.Font;
 
 /**
  *
@@ -16,4 +17,7 @@ public class Constants {
     
     public static final Dimension ButtonSize = new Dimension(100,40);
     public static final Dimension FrameSize = new Dimension(framex,framey);
+    public static final Font titleFont = new Font("Serif", Font.BOLD, 20);
+    public static final Dimension listBoxSize = new Dimension(100,200);
+    
 }
