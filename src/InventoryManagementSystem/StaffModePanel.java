@@ -23,8 +23,11 @@ public class StaffModePanel extends JFrame {
     private JList box;
     private JButton back;
     private JButton next;
+    
     private JScrollPane pane;
     private JLabel Title;
+    
+    
     public StaffModePanel(AllStock model){
         this.model = model;
 
@@ -32,32 +35,50 @@ public class StaffModePanel extends JFrame {
         this.setSize(Constants.FrameSize);
         this.setVisible(true);
         this.setResizable(true);
+        this.getContentPane().setBackground(Constants.backGround);
         this.getContentPane().setLayout(null);
-        this.setBackground(Color.yellow);
-        this.setTitle("Inventory Management System");
+        this.setBackground(Constants.backGround);
+        this.setTitle("Inventory Management System - Staff Mode");
         
-        this.Title = new JLabel("Select a store to view inventory",SwingConstants.CENTER);
+        this.Title = new JLabel("Select a store to view inventory");
         this.Title.setFont(Constants.titleFont);
         this.Title.setVisible(true);
+        this.Title.setForeground(Constants.fontColor);
         this.Title.setSize(Constants.framex, 100 );
-        this.Title.setLocation(Constants.framex/2 - 100, 20);
+        this.Title.setLocation(20, -20);
         
         this.add(this.Title);
         
-        this.pane = new JScrollPane();
-        this.pane.createVerticalScrollBar();
-        
         this.box = new JList(model.getStoresStringArray());
-        this.box.setVisible(true);
-        this.box.setSize(Constants.listBoxSize);
-        this.box.setLocation(20,50);
-        this.box.add(this.pane);
+        this.pane = new JScrollPane();
+        this.pane.getViewport().setView(this.box);
+        this.pane.setVisible(true);
+        this.pane.setSize(Constants.listBoxSize);
+        this.pane.setLocation(20,80);
         
-        this.add(this.box);
+        this.add(this.pane);
+        
+        this.back = new JButton("Back");
+        this.back.setForeground(Constants.fontColor);
+        this.back.setSize(Constants.ButtonSize);
+        this.back.setVisible(true);
+        this.back.setLocation(20 , Constants.framey - 40 - Constants.ButtonSize.height);
+       
+        this.add(this.back);
+        
+        this.next = new JButton("next");
+        this.next.setForeground(Constants.fontColor);
+        this.next.setSize(Constants.ButtonSize);
+        this.next.setVisible(true);
+        this.next.setLocation( Constants.framex - 20 - Constants.ButtonSize.width , Constants.framey - 40 - Constants.ButtonSize.height);
+       
+        this.add(this.next);
         
         
+                
+            
     }
     public void Update(){
-        
+        this.box.setListData(model.getStoresStringArray());
     }
 }
