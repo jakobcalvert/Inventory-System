@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package InventoryManagementSystem;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -15,20 +13,25 @@ import javax.swing.JTextField;
  *
  * @author Jakob
  */
-public class StaffModePanel extends JFrame {
-    private AllStock model;
+public class StaffProductListPanel extends JFrame {
+    private Inventory model;
     public JList box;
     public JButton back;
     public JButton next;
     public JButton add;
     public JButton remove;
     public JTextField addName;
+    public JTextField price;
+    public JTextField weight;
+    public JTextField stockingprice;
+    public JTextField amount;
+    public JCheckBox unitOrWeight;
     
     private JScrollPane pane;
     private JLabel Title;
     
     
-    public StaffModePanel(AllStock model){
+    public StaffProductListPanel(Inventory model){
         this.model = model;
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,7 +43,7 @@ public class StaffModePanel extends JFrame {
         this.setBackground(Constants.backGround);
         this.setTitle("Inventory Management System - Staff Mode");
         
-        this.Title = new JLabel("Select a store to view inventory");
+        this.Title = new JLabel("Select a Item to view details about item and edit");
         this.Title.setFont(Constants.titleFont);
         this.Title.setVisible(true);
         this.Title.setForeground(Constants.fontColor);
@@ -50,7 +53,7 @@ public class StaffModePanel extends JFrame {
         this.add(this.Title);
         
         this.box = new JList();
-        this.box.setListData(this.model.getStoresStringArray());
+        this.box.setListData(this.model.getStringArray());
         this.pane = new JScrollPane();
         this.pane.getViewport().setView(this.box);
         this.pane.setVisible(true);
@@ -106,11 +109,47 @@ public class StaffModePanel extends JFrame {
         this.remove.setLocation( Constants.framex/2 , Constants.framey/2+80);
         
         this.add(this.remove);
+        
+        this.price = new JTextField();
+        this.price.setVisible(true);
+        this.price.setSize(120,30);
+        this.price.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+            
+        this.add(this.price);
+        
+        this.weight = new JTextField();
+        this.weight.setVisible(true);
+        this.weight.setSize(120,30);
+        this.weight.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+            
+        this.add(this.weight);
+        
+        this.stockingprice = new JTextField();
+        this.stockingprice.setVisible(true);
+        this.stockingprice.setSize(120,30);
+        this.stockingprice.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+            
+        this.add(this.stockingprice);
+        
+        this.amount = new JTextField();
+        this.amount.setVisible(true);
+        this.amount.setSize(120,30);
+        this.amount.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+            
+        this.add(this.amount);
+        
+        this.unitOrWeight = new JCheckBox("Priced by weight");
+        this.unitOrWeight.setLocation(Constants.framex/2,Constants.framey/2 -40);
+        
+        this.add(this.unitOrWeight);
+        
                 
             
     }
     public void update(){
-        this.box.setListData(this.model.getStoresStringArray());
+        this.box.setListData(this.model.getStringArray());
     }
     
 }
+
+

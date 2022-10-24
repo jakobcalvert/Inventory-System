@@ -57,10 +57,7 @@ public class MainMenu extends JFrame {
         this.add(this.Instructions);
         
         this.add(this.Welcome);
-        
-        
-        
-
+       
         this.studentMode = new JButton("Student Mode");
         this.studentMode.setForeground(Constants.fontColor);
         this.studentMode.setSize(Constants.ButtonSize);
@@ -97,8 +94,10 @@ public class MainMenu extends JFrame {
     }
 
     public void staffModeClick() {
-        StaffModePanel panel = new StaffModePanel(model);
+        StaffModePanel panel = new StaffModePanel(this.model);
         this.dispose();
+        StaffModeController controller = new StaffModeController(this.model,panel);
+        
     }
 
     public void studentModeClick() {
