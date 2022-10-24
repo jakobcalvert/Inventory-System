@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
 /**
@@ -24,7 +25,7 @@ public class StaffProductListPanel extends JFrame {
     public JTextField price;
     public JTextField weight;
     public JTextField stockingprice;
-    public JTextField amount;
+    public JSpinner amount;
     public JCheckBox unitOrWeight;
     
     private JScrollPane pane;
@@ -111,6 +112,7 @@ public class StaffProductListPanel extends JFrame {
         this.add(this.remove);
         
         this.price = new JTextField();
+        this.price.setText("Enter the price");
         this.price.setVisible(true);
         this.price.setSize(120,30);
         this.price.setLocation(Constants.framex/2,Constants.framey/2 + 40);
@@ -118,6 +120,7 @@ public class StaffProductListPanel extends JFrame {
         this.add(this.price);
         
         this.weight = new JTextField();
+        this.weight.setText("Enter the weight");
         this.weight.setVisible(true);
         this.weight.setSize(120,30);
         this.weight.setLocation(Constants.framex/2,Constants.framey/2 + 40);
@@ -125,21 +128,25 @@ public class StaffProductListPanel extends JFrame {
         this.add(this.weight);
         
         this.stockingprice = new JTextField();
+        this.stockingprice.setText("Enter the stocking price");
         this.stockingprice.setVisible(true);
         this.stockingprice.setSize(120,30);
         this.stockingprice.setLocation(Constants.framex/2,Constants.framey/2 + 40);
             
         this.add(this.stockingprice);
         
-        this.amount = new JTextField();
+        this.amount = new JSpinner();
+        
         this.amount.setVisible(true);
-        this.amount.setSize(120,30);
-        this.amount.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+        this.amount.setSize(50,30);
+        this.amount.setLocation(Constants.framex/2,Constants.framey/2 + -80);
             
         this.add(this.amount);
         
         this.unitOrWeight = new JCheckBox("Priced by weight");
         this.unitOrWeight.setLocation(Constants.framex/2,Constants.framey/2 -40);
+        this.unitOrWeight.setVisible(true);
+        this.unitOrWeight.setSize(150,30);
         
         this.add(this.unitOrWeight);
         

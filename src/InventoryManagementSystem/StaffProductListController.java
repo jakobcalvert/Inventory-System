@@ -16,6 +16,7 @@ public class StaffProductListController {
     private Inventory model;
     private StaffProductListPanel panel;
     private AllStock previous;
+    private boolean pricedByweight;
 
     public StaffProductListController(Inventory model, StaffProductListPanel panel,AllStock previous) {
         this.panel = panel;
@@ -23,6 +24,8 @@ public class StaffProductListController {
         this.model = model;
         
         this.previous = previous;
+        
+        this.pricedByweight = false;
 
         this.panel.back.addActionListener(new ActionListener() {
 
@@ -50,6 +53,13 @@ public class StaffProductListController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 remove();
+            }
+        });
+        this.panel.unitOrWeight.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkBox();
             }
         });
     }
@@ -83,6 +93,20 @@ public class StaffProductListController {
             this.panel.update();
         }
 
+    }
+    public void checkBox(){
+        if (this.panel.unitOrWeight.isSelected()){
+            this.pricedByweight = true;
+            this.panel.price.setText("Enter price per KG");
+            this.panel.amount.setVisible(false);
+            this.panel.stockingprice.setVisible(false);
+            
+        }else{
+            this.pricedByweight = false;
+            this.panel.price.setText("Enter price");
+            this.panel.amount.setVisible(true);
+            this.panel.stockingprice.setVisible(true);
+        }
     }
 }
 

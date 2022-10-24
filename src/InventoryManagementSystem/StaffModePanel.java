@@ -75,14 +75,6 @@ public class StaffModePanel extends JFrame {
        
         this.add(this.next);
         
-        this.next = new JButton("next");
-        this.next.setForeground(Constants.fontColor);
-        this.next.setSize(Constants.ButtonSize);
-        this.next.setVisible(true);
-        this.next.setLocation( Constants.framex - 20 - Constants.ButtonSize.width , Constants.framey - 40 - Constants.ButtonSize.height);
-       
-        this.add(this.next);
-        
         this.add = new JButton("Add");
         this.add.setForeground(Constants.fontColor);
         this.add.setSize(Constants.ButtonSize);
@@ -91,7 +83,7 @@ public class StaffModePanel extends JFrame {
         
         this.add(this.add);
         
-        this.addName = new JTextField();
+        this.addName = new JTextField("Name of new Store");
         this.addName.setVisible(true);
         this.addName.setSize(120,30);
         this.addName.setLocation(Constants.framex/2,Constants.framey/2 + 40);

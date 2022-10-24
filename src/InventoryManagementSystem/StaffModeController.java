@@ -6,6 +6,8 @@ package InventoryManagementSystem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 /**
  *
@@ -49,6 +51,18 @@ public class StaffModeController {
                 remove();
             }
         });
+        this.panel.addName.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                focusGain();
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                focusLos();
+            }
+        });
     }
 
     public void back() {
@@ -58,23 +72,25 @@ public class StaffModeController {
     }
 
     public void next() {
+        System.out.println("next pressed");
         int index = this.panel.box.getSelectedIndex();
         Inventory store = model.getStock(index);
         StaffProductListPanel panel = new StaffProductListPanel(store);
-        StaffProductListController controller = new StaffProductListController(store,panel,this.model);
+        StaffProductListController controller = new StaffProductListController(store, panel, this.model);
         this.panel.dispose();
-        
+
     }
 
     public void add() {
         String add = this.panel.addName.getText();
-        
-        if (!add.isEmpty()) {
+        if(!add.equals("Name of new Store")){
             this.model.addStore(new Inventory(add));
-            this.panel.addName.setText("");
-            this.panel.update();
+        this.panel.addName.setText("");
+        this.panel.update();
+        this.panel.addName.setText("Name of new Store");
         }
-                
+        
+
     }
 
     public void remove() {
@@ -82,6 +98,17 @@ public class StaffModeController {
         if (remove >= 0) {
             this.model.remove(remove);
             this.panel.update();
+        }
+
+    }
+
+    public void focusGain() {
+        this.panel.addName.setText("");
+    }
+
+    public void focusLos() {
+        if (this.panel.addName.getText().equals("")) {
+            this.panel.addName.setText("Name of new Store");
         }
 
     }
