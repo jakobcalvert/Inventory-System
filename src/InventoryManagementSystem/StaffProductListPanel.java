@@ -1,6 +1,7 @@
 
 package InventoryManagementSystem;
 
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -28,6 +29,7 @@ public class StaffProductListPanel extends JFrame {
     public JSpinner amount;
     public JCheckBox unitOrWeight;
     public JLabel amountLabel;
+    public JLabel invalidInput;
     
     private JScrollPane pane;
     private JLabel Title;
@@ -170,6 +172,14 @@ public class StaffProductListPanel extends JFrame {
         
         this.add(this.unitOrWeight);
         
+        this.invalidInput = new JLabel();
+        this.invalidInput.setFont(Constants.regularFont);
+        this.invalidInput.setSize(Constants.textFieldSize);
+        this.invalidInput.setVisible(false);
+        this.invalidInput.setForeground(Color.red);
+        this.invalidInput.setLocation(Constants.framex/2 + 60,30);
+        
+        this.add(this.invalidInput);
                 
             
     }

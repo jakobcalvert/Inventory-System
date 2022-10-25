@@ -119,17 +119,91 @@ public class StaffProductListController {
     }
 
     public void add() {
-        String add = this.panel.addName.getText();
 
-        if (!add.isEmpty()) {
+        if (pricedByweight) {
 
+            String name;
+            double price;
+            double weight;
+            double stockingPrice;
+            try {
+                name = this.panel.addName.getText();
+                if (name.equals("Name of new Product")) {
+                    throw new IllegalArgumentException("Name needs to be filled in");
+                }
+
+                try {
+                    price = Double.parseDouble(this.panel.price.getText());
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("invalid price input");
+                }
+                try {
+                    weight = Double.parseDouble(this.panel.weight.getText());
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("invalid weight input");
+                }
+                try {
+                    stockingPrice = Double.parseDouble(this.panel.stockingprice.getText());
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("invalid stocking price input");
+                }
+                this.panel.invalidInput.setVisible(false);
+                this.model.addProduct(new PricedByWeight(name, price,  weight,stockingPrice));
+                
+                this.panel.update();
+            } catch (Exception e) {
+                this.panel.invalidInput.setText(e.getMessage());
+                this.panel.invalidInput.setVisible(true);
+            }
+
+        } else {
+            String name;
+            double price;
+            double weight;
+            double stockingPrice;
+            int amount;
+
+            try {
+                name = this.panel.addName.getText();
+                if (name.equals("Name of new Product")) {
+                    throw new IllegalArgumentException("Name needs to be filled in");
+                }
+
+                try {
+                    price = Double.parseDouble(this.panel.price.getText());
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("invalid price input");
+                }
+                try {
+                    weight = Double.parseDouble(this.panel.weight.getText());
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("invalid weight input");
+                }
+                try {
+                    stockingPrice = Double.parseDouble(this.panel.stockingprice.getText());
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("invalid stocking price input");
+                }
+                try {
+                    amount = (int) this.panel.amount.getValue();
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("invalid amount input");
+                }
+                this.panel.invalidInput.setVisible(false);
+                this.model.addProduct(new PricedByUnit(name, price, amount, weight, stockingPrice));
+                
+                this.panel.update();
+            } catch (Exception e) {
+                this.panel.invalidInput.setText(e.getMessage());
+                this.panel.invalidInput.setVisible(true);
+            }
         }
 
     }
 
     public void remove() {
         int input = JOptionPane.showConfirmDialog(null, "Are you sure your would like to remove " + this.panel.box.getSelectedValue() + "?");
-        
+
         if (input == 0) {
             int remove = this.panel.box.getSelectedIndex();
             if (remove >= 0) {
@@ -145,15 +219,17 @@ public class StaffProductListController {
         if (this.panel.unitOrWeight.isSelected()) {
             this.pricedByweight = true;
             this.panel.price.setText("Enter price per KG");
+            this.panel.weight.setText("Enter the amount in kg");
+            this.panel.stockingprice.setText("Enter the stocking price per KG");
             this.panel.amount.setVisible(false);
-            this.panel.stockingprice.setVisible(false);
             this.panel.amountLabel.setVisible(false);
 
         } else {
             this.pricedByweight = false;
             this.panel.price.setText("Enter price");
+            this.panel.weight.setText("Enter the weight per unit");
+            this.panel.stockingprice.setText("Enter the stocking price");
             this.panel.amount.setVisible(true);
-            this.panel.stockingprice.setVisible(true);
             this.panel.amountLabel.setVisible(true);
         }
     }
