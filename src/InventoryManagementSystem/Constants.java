@@ -19,8 +19,11 @@ public class Constants {
     public static final Dimension ButtonSize = new Dimension(100,40);
     public static final Dimension FrameSize = new Dimension(framex,framey);
     public static final Font titleFont = new Font("Serif", Font.PLAIN, 16);
+    public static final Font regularFont = new Font("Serif", Font.PLAIN, 14);
     public static final Color fontColor = Color.blue;
     public static final Color backGround = Color.white;
-    public static final Dimension listBoxSize = new Dimension(200,280);
+    public static final Color buttonColor = new Color(240,240,240);
+    public static final Dimension listBoxSize = new Dimension(200,290);
+    public static final Dimension textFieldSize = new Dimension(200,30);
     
 }

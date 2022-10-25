@@ -4,6 +4,7 @@
  */
 package InventoryManagementSystem;
 
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -51,11 +52,13 @@ public class StaffModePanel extends JFrame {
         
         this.box = new JList();
         this.box.setListData(this.model.getStoresStringArray());
+        this.box.setForeground(Constants.fontColor);
+        this.box.setBackground(Constants.buttonColor);
         this.pane = new JScrollPane();
         this.pane.getViewport().setView(this.box);
         this.pane.setVisible(true);
         this.pane.setSize(Constants.listBoxSize);
-        this.pane.setLocation(20,80);
+        this.pane.setLocation(20,60);
         
         this.add(this.pane);
         
@@ -77,25 +80,26 @@ public class StaffModePanel extends JFrame {
         
         this.add = new JButton("Add");
         this.add.setForeground(Constants.fontColor);
-        this.add.setSize(Constants.ButtonSize);
+        this.add.setSize(Constants.textFieldSize.width,Constants.ButtonSize.height);
         this.add.setVisible(true);
-        this.add.setLocation( Constants.framex/2 , Constants.framey/2);
+        this.add.setLocation( Constants.framex/2 , 140);
         
         this.add(this.add);
         
         this.addName = new JTextField("Name of new Store");
+        this.addName.setForeground(Constants.fontColor);
+        this.addName.setBackground(Constants.buttonColor);
         this.addName.setVisible(true);
-        this.addName.setSize(120,30);
-        this.addName.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+        this.addName.setSize(Constants.textFieldSize);
+        this.addName.setLocation(Constants.framex/2,100);
             
         this.add(this.addName);
         
-        
-        this.remove = new JButton("remove");
+        this.remove = new JButton("remove selected");
         this.remove.setForeground(Constants.fontColor);
-        this.remove.setSize(Constants.ButtonSize);
+        this.remove.setSize(Constants.textFieldSize.width,Constants.ButtonSize.height);
         this.remove.setVisible(true);
-        this.remove.setLocation( Constants.framex/2 , Constants.framey/2+80);
+        this.remove.setLocation( Constants.framex/2 , 240);
         
         this.add(this.remove);
                 

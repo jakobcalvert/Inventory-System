@@ -27,9 +27,11 @@ public class StaffProductListPanel extends JFrame {
     public JTextField stockingprice;
     public JSpinner amount;
     public JCheckBox unitOrWeight;
+    public JLabel amountLabel;
     
     private JScrollPane pane;
     private JLabel Title;
+    
     
     
     public StaffProductListPanel(Inventory model){
@@ -54,12 +56,15 @@ public class StaffProductListPanel extends JFrame {
         this.add(this.Title);
         
         this.box = new JList();
+        this.box.setBackground(Constants.buttonColor);
         this.box.setListData(this.model.getStringArray());
+        this.box.setForeground(Constants.fontColor);
         this.pane = new JScrollPane();
         this.pane.getViewport().setView(this.box);
         this.pane.setVisible(true);
         this.pane.setSize(Constants.listBoxSize);
-        this.pane.setLocation(20,80);
+        this.pane.setLocation(20,60);
+        
         
         this.add(this.pane);
         
@@ -79,74 +84,89 @@ public class StaffProductListPanel extends JFrame {
        
         this.add(this.next);
         
-        this.next = new JButton("next");
-        this.next.setForeground(Constants.fontColor);
-        this.next.setSize(Constants.ButtonSize);
-        this.next.setVisible(true);
-        this.next.setLocation( Constants.framex - 20 - Constants.ButtonSize.width , Constants.framey - 40 - Constants.ButtonSize.height);
-       
-        this.add(this.next);
         
         this.add = new JButton("Add");
         this.add.setForeground(Constants.fontColor);
-        this.add.setSize(Constants.ButtonSize);
+        this.add.setSize(Constants.textFieldSize.width,Constants.ButtonSize.height);
         this.add.setVisible(true);
-        this.add.setLocation( Constants.framex/2 , Constants.framey/2);
+        this.add.setLocation( Constants.framex/2 , 250);
         
         this.add(this.add);
         
-        this.addName = new JTextField();
+        this.addName = new JTextField("Name of new Product");
         this.addName.setVisible(true);
-        this.addName.setSize(120,30);
-        this.addName.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+        this.addName.setSize(Constants.textFieldSize);
+        this.addName.setLocation(Constants.framex/2, 90);
+        this.addName.setForeground(Constants.fontColor);
+        this.addName.setBackground(Constants.buttonColor);
             
         this.add(this.addName);
         
         
-        this.remove = new JButton("remove");
+        this.remove = new JButton("remove selected");
         this.remove.setForeground(Constants.fontColor);
-        this.remove.setSize(Constants.ButtonSize);
+        this.remove.setSize(Constants.textFieldSize.width,Constants.ButtonSize.height);
         this.remove.setVisible(true);
-        this.remove.setLocation( Constants.framex/2 , Constants.framey/2+80);
+        this.remove.setLocation( Constants.framex/2 , 300);
+        this.remove.setForeground(Constants.fontColor);
+        this.remove.setBackground(Constants.buttonColor);
         
         this.add(this.remove);
         
         this.price = new JTextField();
         this.price.setText("Enter the price");
         this.price.setVisible(true);
-        this.price.setSize(120,30);
-        this.price.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+        this.price.setSize(Constants.textFieldSize);
+        this.price.setLocation(Constants.framex/2,120);
+        this.price.setBackground(Constants.buttonColor);
+        this.price.setForeground(Constants.fontColor);
             
         this.add(this.price);
         
         this.weight = new JTextField();
         this.weight.setText("Enter the weight");
         this.weight.setVisible(true);
-        this.weight.setSize(120,30);
-        this.weight.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+        this.weight.setSize(Constants.textFieldSize);
+        this.weight.setLocation(Constants.framex/2,150);
+        this.weight.setForeground(Constants.fontColor);
+        this.weight.setBackground(Constants.buttonColor);
             
         this.add(this.weight);
         
         this.stockingprice = new JTextField();
         this.stockingprice.setText("Enter the stocking price");
         this.stockingprice.setVisible(true);
-        this.stockingprice.setSize(120,30);
-        this.stockingprice.setLocation(Constants.framex/2,Constants.framey/2 + 40);
+        this.stockingprice.setSize(Constants.textFieldSize);
+        this.stockingprice.setLocation(Constants.framex/2,180);
+        this.stockingprice.setForeground(Constants.fontColor);
+        this.stockingprice.setBackground(Constants.buttonColor);
             
         this.add(this.stockingprice);
         
         this.amount = new JSpinner();
-        
         this.amount.setVisible(true);
         this.amount.setSize(50,30);
-        this.amount.setLocation(Constants.framex/2,Constants.framey/2 + -80);
+        this.amount.setLocation(Constants.framex/2,210);
+        this.amount.setForeground(Constants.fontColor);
+        this.amount.setBackground(Constants.buttonColor);
             
         this.add(this.amount);
         
+        this.amountLabel = new JLabel("Enter the amount");
+        this.amountLabel.setFont(Constants.regularFont);
+        this.amountLabel.setSize(Constants.textFieldSize);
+        this.amountLabel.setVisible(true);
+        this.amountLabel.setForeground(Constants.fontColor);
+        this.amountLabel.setLocation(Constants.framex/2 + 60,210);
+        
+        this.add(this.amountLabel);
+        
         this.unitOrWeight = new JCheckBox("Priced by weight");
-        this.unitOrWeight.setLocation(Constants.framex/2,Constants.framey/2 -40);
+        this.unitOrWeight.setLocation(Constants.framex/2,60);
+        this.unitOrWeight.setBackground(Constants.buttonColor);
         this.unitOrWeight.setVisible(true);
         this.unitOrWeight.setSize(150,30);
+        this.unitOrWeight.setForeground(Constants.fontColor);
         
         this.add(this.unitOrWeight);
         

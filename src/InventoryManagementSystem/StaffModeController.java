@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -72,32 +73,37 @@ public class StaffModeController {
     }
 
     public void next() {
-        System.out.println("next pressed");
-        int index = this.panel.box.getSelectedIndex();
-        Inventory store = model.getStock(index);
-        StaffProductListPanel panel = new StaffProductListPanel(store);
-        StaffProductListController controller = new StaffProductListController(store, panel, this.model);
-        this.panel.dispose();
+
+        if (!this.panel.box.isSelectionEmpty()) {
+            int index = this.panel.box.getSelectedIndex();
+            Inventory store = model.getStock(index);
+            StaffProductListPanel panel = new StaffProductListPanel(store);
+            StaffProductListController controller = new StaffProductListController(store, panel, this.model);
+            this.panel.dispose();
+        }
 
     }
 
     public void add() {
         String add = this.panel.addName.getText();
-        if(!add.equals("Name of new Store")){
+        if (!add.equals("Name of new Store")) {
             this.model.addStore(new Inventory(add));
-        this.panel.addName.setText("");
-        this.panel.update();
-        this.panel.addName.setText("Name of new Store");
+            this.panel.addName.setText("");
+            this.panel.update();
+            this.panel.addName.setText("Name of new Store");
         }
-        
 
     }
 
     public void remove() {
-        int remove = this.panel.box.getSelectedIndex();
-        if (remove >= 0) {
-            this.model.remove(remove);
-            this.panel.update();
+        int input = JOptionPane.showConfirmDialog(null, "Are you sure your would like to remove " + this.panel.box.getSelectedValue() + "?");
+
+        if (input == 0) {
+            int remove = this.panel.box.getSelectedIndex();
+            if (remove >= 0) {
+                this.model.remove(remove);
+                this.panel.update();
+            }
         }
 
     }
