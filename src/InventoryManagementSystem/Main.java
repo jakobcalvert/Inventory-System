@@ -21,7 +21,8 @@ public class Main {
             AllStock Stock = save.readTables();
             MainMenu menu = new MainMenu(Stock);    
         } catch(Exception E){
-            System.out.println("Previous instance of program has not been closed please close before proceeding ");
+             JOptionPane.showMessageDialog(null, "Previous instance of program has not been closed please close before proceeding ");
+            
         }
     }
 }

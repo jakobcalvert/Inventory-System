@@ -4,29 +4,30 @@
  */
 package InventoryManagementSystem;
 
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Jakob
  */
-public class StaffItemPanel extends JFrame {
-    private Item model;
+public class CustomerModePanel extends JFrame {
+    private AllStock model;
     public JList box;
     public JButton back;
-    public JButton Edit;
+    public JButton next;
     
     
     private JScrollPane pane;
     private JLabel Title;
     
     
-    
-    public StaffItemPanel(Item model){
+    public CustomerModePanel(AllStock model){
         this.model = model;
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,7 +39,7 @@ public class StaffItemPanel extends JFrame {
         this.setBackground(Constants.backGround);
         this.setTitle("Inventory Management System - Staff Mode");
         
-        this.Title = new JLabel("View or edit item details");
+        this.Title = new JLabel("Select a store to view inventory");
         this.Title.setFont(Constants.titleFont);
         this.Title.setVisible(true);
         this.Title.setForeground(Constants.fontColor);
@@ -48,15 +49,15 @@ public class StaffItemPanel extends JFrame {
         this.add(this.Title);
         
         this.box = new JList();
-        this.box.setBackground(Constants.buttonColor);
-        this.box.setListData(model.getStaffArray());
+        this.box.setListData(this.model.getStoresStringArray());
         this.box.setForeground(Constants.fontColor);
+        this.box.setBackground(Constants.buttonColor);
         this.pane = new JScrollPane();
         this.pane.getViewport().setView(this.box);
         this.pane.setVisible(true);
         this.pane.setSize(Constants.listBoxSize);
-        this.pane.setLocation(20,60);      
-
+        this.pane.setLocation(20,60);
+        
         this.add(this.pane);
         
         this.back = new JButton("Back");
@@ -67,16 +68,16 @@ public class StaffItemPanel extends JFrame {
        
         this.add(this.back);
         
-        this.Edit = new JButton("Edit");
-        this.Edit.setForeground(Constants.fontColor);
-        this.Edit.setSize(Constants.ButtonSize);
-        this.Edit.setVisible(true);
-        this.Edit.setLocation(Constants.framex - 20 - Constants.ButtonSize.width  , Constants.framey - 40 - Constants.ButtonSize.height);
+        this.next = new JButton("next");
+        this.next.setForeground(Constants.fontColor);
+        this.next.setSize(Constants.ButtonSize);
+        this.next.setVisible(true);
+        this.next.setLocation( Constants.framex - 20 - Constants.ButtonSize.width , Constants.framey - 40 - Constants.ButtonSize.height);
        
-        this.add(this.Edit);
+        this.add(this.next);
+        
         
     }
-    public void update(){
-        this.box.setListData(this.model.getStaffArray());
-    }
+    
+    
 }

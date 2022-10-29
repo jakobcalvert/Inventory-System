@@ -101,8 +101,9 @@ public class MainMenu extends JFrame {
     }
 
     public void studentModeClick() {
-        StaffModePanel panel = new StaffModePanel(model);
+        CustomerModePanel panel = new CustomerModePanel(this.model);
         this.dispose();
+        CustomerModeController controller = new CustomerModeController(this.model,panel);
     }
 
 }

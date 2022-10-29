@@ -68,8 +68,6 @@ public class StaffWeightController {
                 JOptionPane.showMessageDialog(null, "Please select a index to edit value");
                 break;
         }
-        
-       
     }
     public void EditName(){
         String name= JOptionPane.showInputDialog("Please input new name: ");

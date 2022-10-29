@@ -66,8 +66,7 @@ public class StaffProductListPanel extends JFrame {
         this.pane.setVisible(true);
         this.pane.setSize(Constants.listBoxSize);
         this.pane.setLocation(20,60);
-        
-        
+                
         this.add(this.pane);
         
         this.back = new JButton("Back");
