@@ -12,32 +12,22 @@ import java.sql.SQLException;
  *
  * @author Jakob
  */
-public class SimpleDBManager {
+public class DataBaseManager {
     
-/**
-     * If you try to connect the database on the server, you must start the
-     * server first. Meanwhile, you need to import 'derbyclient.jar' to the
-     * libraries.
-     */
-    //    private static final String URL = "jdbc:derby://localhost:1527/BookStoreDB";
-    /**
-     * If you try to connect the database embedded in the project, you must stop
-     * the server first. Meanwhile, you need to import 'derby.jar' to the
-     * libraries.
-     */
+
     private static final String USER_NAME = "pdc"; //your DB username
     private static final String PASSWORD = "pdc"; //your DB password
     private static final String URL = "jdbc:derby:Inventory_DB_Ebd; create=true";  //url of the DB host
 
     Connection conn;
 
-    public SimpleDBManager() {
+    public DataBaseManager() {
         establishConnection();
     }
 
     public static void main(String[] args) {
-        SimpleDBManager dbManager = new SimpleDBManager();
-        System.out.println(dbManager.getConnection());
+        DataBaseManager dbManager = new DataBaseManager();
+        //System.out.println(dbManager.getConnection());
     }
 
     public Connection getConnection() {
@@ -49,7 +39,7 @@ public class SimpleDBManager {
         if (this.conn == null) {
             try {
                 conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-                System.out.println(URL + " Get Connected Successfully ....");
+                //System.out.println(URL + " Get Connected Successfully ....");
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }

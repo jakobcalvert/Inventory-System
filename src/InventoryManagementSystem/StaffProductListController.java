@@ -148,7 +148,7 @@ public class StaffProductListController {
                     throw new IllegalArgumentException("invalid stocking price input");
                 }
                 this.panel.invalidInput.setVisible(false);
-                this.model.addProduct(new PricedByWeight(name, price,  weight,stockingPrice));
+                this.model.addPricedByWeight(new PricedByWeight(name, price,  weight,stockingPrice));
                 
                 this.panel.update();
             } catch (Exception e) {
@@ -190,7 +190,7 @@ public class StaffProductListController {
                     throw new IllegalArgumentException("invalid amount input");
                 }
                 this.panel.invalidInput.setVisible(false);
-                this.model.addProduct(new PricedByUnit(name, price, amount, weight, stockingPrice));
+                this.model.addPricedByUnit(new PricedByUnit(name, price, amount, weight, stockingPrice));
                 
                 this.panel.update();
             } catch (Exception e) {

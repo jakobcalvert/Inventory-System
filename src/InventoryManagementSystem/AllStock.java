@@ -15,21 +15,33 @@ public class AllStock implements StringRepresentation {
 
     //this array stores all the inventorys
     private ArrayList<Inventory> Stores;
+    
+    //stores the server save file
+    private ServerSaveFile serverSave;
 
     //this constructor initialises the array without a save
     public AllStock() {
         Stores = new ArrayList<>();
+        serverSave = new ServerSaveFile();
+    }
+    
+    //this constructor initialises the array with a array list of inventorys 
+    public AllStock(ArrayList<Inventory> stores) {
+        Stores = stores;
+        serverSave = new ServerSaveFile();
     }
 
     //this constructor initialises the array and fills the inventorys with data
     public AllStock(String save) {
         Stores = new ArrayList<>();
         this.setToStringRepresentation(save);
+        serverSave = new ServerSaveFile();
     }
 
     //this function is used to add stores to the application
     public void addStore(Inventory e) {
         this.Stores.add(e);
+        serverSave.addStore(e);
     }
 
     //this function lists out all the stores names and their index numbers
@@ -64,7 +76,12 @@ public class AllStock implements StringRepresentation {
     }
 
     public void remove(int index) {
+        Inventory remove = this.getStock(index);
         this.Stores.remove(index);
+        
+        this.serverSave.removeStore(remove);
+        
+        
     }
 
     //this functions returns a store using its index

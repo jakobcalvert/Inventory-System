@@ -19,7 +19,7 @@ public class PricedByWeight extends Item {
 
     //stores the price of restoking in kg
     private double stockPricePerKg;
-
+    
     //basic constructor
     public PricedByWeight(String name, double pricePerKg, double amountKg, double stockPrice) {
         super(name);
@@ -113,4 +113,16 @@ public class PricedByWeight extends Item {
         Double two = ((PricedByWeight) o).amountKg;
         return one.compareTo(two);
     }
+    
+    //returns a array representation of the item for the staff
+    public String[] GetStaffArray(){
+        String[] returnString = {"Name: " + this.name ,"Price per KG: "+this.pricePerKg + "$/KG","Amount: "+this.amountKg + "KG","Stocking Price Per Kg: " + this.stockPricePerKg+ "$/KG"};
+        return returnString;
+    }
+    
+    //returns a array representation of the item for the customer
+    public String[] getCustomerArray(){
+        String[] returnString = {"Name: " + this.name ,"Price per KG: "+this.pricePerKg + "$/KG","Amount: "+this.amountKg + "KG"};
+        return returnString;
+    } 
 }

@@ -20,16 +20,21 @@ public class Inventory implements StringRepresentation {
     //this string stores the locations name
     private String locationName;
 
+    //stores the server save file
+    private ServerSaveFile serverSave;
+
     //this constructor initialises a new store
     public Inventory(String locationName, boolean isMade) {
         this.Stock = new ArrayList<>();
         this.locationName = locationName;
+        this.serverSave = new ServerSaveFile();
     }
 
     //this constructor reads a string that represents a save for the inventory and creates the inventory
     public Inventory(String Representation) {
         this.Stock = new ArrayList<>();
         this.setToStringRepresentation(Representation);
+        this.serverSave = new ServerSaveFile();
     }
 
     //this gives a string representation of the location
@@ -76,8 +81,29 @@ public class Inventory implements StringRepresentation {
         Collections.sort(this.Stock);
     }
 
+    //adds price by weight item to the stock array
+    public void addPricedByWeight(PricedByWeight item) {
+        this.serverSave.addPricedByWeight(this,  item);
+        this.Stock.add(item);
+        Collections.sort(this.Stock);
+    }
+    
+    //adds price by unit item to the stock array
+    public void addPricedByUnit(PricedByUnit item) {
+        this.serverSave.addPricedByUnit(this,  item);
+        this.Stock.add(item);
+        Collections.sort(this.Stock);
+    }
+
     //removes product of certain index from the stock array
     public void removeProduct(int index) {
+        Item remove = this.getProduct(index);
+        if (remove.getClass() == PricedByUnit.class) {
+            this.serverSave.removePricedByUnit(this, (PricedByUnit) remove);
+        } else {
+            this.serverSave.removePricedByWeight(this, (PricedByWeight) remove);
+        }
+
         this.Stock.remove(index);
     }
 
@@ -118,12 +144,12 @@ public class Inventory implements StringRepresentation {
     public int getSize() {
         return this.Stock.size();
     }
-    
-    public String[] getStringArray(){
+
+    public String[] getStringArray() {
         String[] array = new String[this.Stock.size()];
         for (int i = 0; i < this.Stock.size(); i++) {
             array[i] = this.Stock.get(i).toString();
         }
-        return  array;
+        return array;
     }
 }
