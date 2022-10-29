@@ -4,24 +4,28 @@
  */
 package InventoryManagementSystem;
 
-import java.awt.BorderLayout;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 
 /**
  *
  * @author Jakob
  */
+//this is where the program is first started 
 public class Main {
 
     public static void main(String[] args) {
+        //starts the program 
         try{
+            //creates a new server save file
             ServerSaveFile save = new ServerSaveFile();
+            //initialises all stock variable to contain the contents of the server
             AllStock Stock = save.readTables();
+            //creates new menu frame
             MainMenu menu = new MainMenu(Stock);    
         } catch(Exception E){
-             JOptionPane.showMessageDialog(null, "Previous instance of program has not been closed please close before proceeding ");
+            //called if the user has another instance of this code open
+            JOptionPane.showMessageDialog(null, "Previous instance of program has not been closed please close before proceeding ");
             
         }
     }

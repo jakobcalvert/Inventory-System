@@ -169,6 +169,7 @@ public class Inventory implements StringRepresentation {
         return this.Stock.size();
     }
 
+    //gets the string array of all of the items in the store
     public String[] getStringArray() {
         String[] array = new String[this.Stock.size()];
         for (int i = 0; i < this.Stock.size(); i++) {

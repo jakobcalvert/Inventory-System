@@ -15,7 +15,7 @@ public class AllStock implements StringRepresentation {
 
     //this array stores all the inventorys
     private ArrayList<Inventory> Stores;
-    
+
     //stores the server save file
     private ServerSaveFile serverSave;
 
@@ -24,7 +24,7 @@ public class AllStock implements StringRepresentation {
         Stores = new ArrayList<>();
         serverSave = new ServerSaveFile();
     }
-    
+
     //this constructor initialises the array with a array list of inventorys 
     public AllStock(ArrayList<Inventory> stores) {
         Stores = stores;
@@ -78,10 +78,9 @@ public class AllStock implements StringRepresentation {
     public void remove(int index) {
         Inventory remove = this.getStock(index);
         this.Stores.remove(index);
-        
+
         this.serverSave.removeStore(remove);
-        
-        
+
     }
 
     //this functions returns a store using its index
@@ -98,13 +97,14 @@ public class AllStock implements StringRepresentation {
     public int size() {
         return this.Stores.size();
     }
-    
-    public String[] getStoresStringArray(){
+
+    //returns a string representation of the stores names 
+    public String[] getStoresStringArray() {
         String[] array = new String[this.Stores.size()];
         for (int i = 0; i < this.Stores.size(); i++) {
             array[i] = this.Stores.get(i).toString();
         }
-        return  array;
+        return array;
     }
 
 }

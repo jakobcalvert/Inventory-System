@@ -12,23 +12,26 @@ import javax.swing.JScrollPane;
  *
  * @author Jakob
  */
+//frame displaying all of the items and their details
 public class CustomerProductListPanel extends JFrame {
+   
+    //initialises variables 
     private Inventory model;
     public JList box;
-    public JList box2;
+    public JList ItemDetails;
     public JButton back;
-    public JScrollPane pane2;
+    public JScrollPane ItemDetailsPane;
     public JButton Buy;
-
     private JScrollPane pane;
-    
     private JLabel Title;
     
     
-    
+    //sets the variables when the frame is created
     public CustomerProductListPanel(Inventory model){
+        //initialises variables 
         this.model = model;
 
+        //sets the frame 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(Constants.FrameSize);
         this.setVisible(true);
@@ -38,15 +41,17 @@ public class CustomerProductListPanel extends JFrame {
         this.setBackground(Constants.backGround);
         this.setTitle("Inventory Management System - Customer Mode");
         
+        //sets the title 
         this.Title = new JLabel("Select a Item to view details");
         this.Title.setFont(Constants.titleFont);
         this.Title.setVisible(true);
         this.Title.setForeground(Constants.fontColor);
         this.Title.setSize(Constants.framex, 100 );
         this.Title.setLocation(20, -20);
-        
+        //adds the title to the frame
         this.add(this.Title);
         
+        //sets the list box containing the items 
         this.box = new JList();
         this.box.setBackground(Constants.buttonColor);
         this.box.setListData(this.model.getStringArray());
@@ -56,30 +61,32 @@ public class CustomerProductListPanel extends JFrame {
         this.pane.setVisible(true);
         this.pane.setSize(Constants.listBoxSize);
         this.pane.setLocation(20,60);
-        
+        //adds the list box to the 
         this.add(this.pane);
         
-        this.box2 = new JList();
-        this.box2.setBackground(Constants.buttonColor);
-        this.box2.setListData(this.model.getStringArray());
-        this.box2.setForeground(Constants.fontColor);
+        //set the item details box
+        this.ItemDetails = new JList();
+        this.ItemDetails.setBackground(Constants.buttonColor);
+        this.ItemDetails.setListData(this.model.getStringArray());
+        this.ItemDetails.setForeground(Constants.fontColor);
+        this.ItemDetailsPane = new JScrollPane();
+        this.ItemDetailsPane.getViewport().setView(this.ItemDetails);
+        this.ItemDetailsPane.setVisible(false);
+        this.ItemDetailsPane.setSize(Constants.listBoxSize.width, 75);
+        this.ItemDetailsPane.setLocation(Constants.framex/2,60);
+        //adds the box to the frame
+        this.add(ItemDetailsPane);
         
-        this.pane2 = new JScrollPane();
-        this.pane2.getViewport().setView(this.box2);
-        this.pane2.setVisible(false);
-        this.pane2.setSize(Constants.listBoxSize.width, 75);
-        this.pane2.setLocation(Constants.framex/2,60);
-
-        this.add(pane2);
-        
+        //sets the back button
         this.back = new JButton("Back");
         this.back.setForeground(Constants.fontColor);
         this.back.setSize(Constants.ButtonSize);
         this.back.setVisible(true);
         this.back.setLocation(20 , Constants.framey - 40 - Constants.ButtonSize.height);
-       
+        //adds the back button to the frame
         this.add(this.back);      
         
+        //sets the buy button
         this.Buy = new JButton("Buy");
         this.Buy.setForeground(Constants.fontColor);
         this.Buy.setSize(Constants.listBoxSize.width,Constants.ButtonSize.height);
@@ -87,12 +94,13 @@ public class CustomerProductListPanel extends JFrame {
         this.Buy.setLocation( Constants.framex/2 , 300);
         this.Buy.setForeground(Constants.fontColor);
         this.Buy.setBackground(Constants.buttonColor);
-        
+        //adds the buy button to the frame
         this.add(this.Buy);
       
     }
+    //updates the item details box after a change has been made
     public void update(String[] update){
-        this.box2.setListData(update);
+        this.ItemDetails.setListData(update);
     }
     
 }

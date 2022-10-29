@@ -12,40 +12,38 @@ import java.sql.SQLException;
  *
  * @author Jakob
  */
+//class to manages the database
 public class DataBaseManager {
     
-
-    private static final String USER_NAME = "pdc"; //your DB username
-    private static final String PASSWORD = "pdc"; //your DB password
-    private static final String URL = "jdbc:derby:Inventory_DB_Ebd; create=true";  //url of the DB host
-
+    //data base variables 
+    private static final String USER_NAME = "pdc"; 
+    private static final String PASSWORD = "pdc"; 
+    private static final String URL = "jdbc:derby:Inventory_DB_Ebd; create=true";
     Connection conn;
 
+    //makes a connection with the database when the object is created
     public DataBaseManager() {
         establishConnection();
     }
 
-    public static void main(String[] args) {
-        DataBaseManager dbManager = new DataBaseManager();
-        //System.out.println(dbManager.getConnection());
-    }
-
+    //returns the connection object
     public Connection getConnection() {
         return this.conn;
     }
 
-    //Establish connection
+    //if the conection has not already been made makes it
     public void establishConnection() {
         if (this.conn == null) {
             try {
                 conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-                //System.out.println(URL + " Get Connected Successfully ....");
+                
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }
         }
     }
 
+    //if called closes the connection
     public void closeConnections() {
         if (conn != null) {
             try {

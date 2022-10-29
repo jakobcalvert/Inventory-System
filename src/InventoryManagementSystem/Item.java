@@ -38,6 +38,7 @@ abstract public class Item implements Comparable<Item>, StringRepresentation {
         this.name = name;
     }
     
+    //used to print into the list boxes
     abstract public String[] getStaffArray();
     abstract public String[] getCustomerArray();
 }
