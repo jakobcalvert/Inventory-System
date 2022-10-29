@@ -115,14 +115,20 @@ public class PricedByWeight extends Item {
     }
     
     //returns a array representation of the item for the staff
-    public String[] GetStaffArray(){
+    @Override
+    public String[] getStaffArray(){
         String[] returnString = {"Name: " + this.name ,"Price per KG: "+this.pricePerKg + "$/KG","Amount: "+this.amountKg + "KG","Stocking Price Per Kg: " + this.stockPricePerKg+ "$/KG"};
         return returnString;
     }
     
     //returns a array representation of the item for the customer
+    @Override
     public String[] getCustomerArray(){
         String[] returnString = {"Name: " + this.name ,"Price per KG: "+this.pricePerKg + "$/KG","Amount: "+this.amountKg + "KG"};
         return returnString;
     } 
+    
+    
+
+    
 }

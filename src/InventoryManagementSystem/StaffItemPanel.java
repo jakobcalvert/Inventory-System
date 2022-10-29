@@ -21,7 +21,7 @@ public class StaffItemPanel extends JFrame {
     private Item model;
     public JList box;
     public JButton back;
-    
+    public JButton Edit;
     
     
     private JScrollPane pane;
@@ -29,7 +29,7 @@ public class StaffItemPanel extends JFrame {
     
     
     
-    public StaffItemPanel(PricedByWeight model){
+    public StaffItemPanel(Item model){
         this.model = model;
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,16 +52,13 @@ public class StaffItemPanel extends JFrame {
         
         this.box = new JList();
         this.box.setBackground(Constants.buttonColor);
-        this.box.setListData(model.getArray);
+        this.box.setListData(model.getStaffArray());
         this.box.setForeground(Constants.fontColor);
-        this.pane = new JScrollPane();
-        this.pane.getViewport().setView(this.box);
-        this.pane.setVisible(true);
-        this.pane.setSize(Constants.listBoxSize);
-        this.pane.setLocation(20,60);
-        
-        
-        this.add(this.pane);
+        this.box.setVisible(true);
+        this.box.setSize(Constants.listBoxSize);
+        this.box.setLocation(20,60);
+
+        this.add(this.box);
         
         this.back = new JButton("Back");
         this.back.setForeground(Constants.fontColor);
@@ -71,5 +68,16 @@ public class StaffItemPanel extends JFrame {
        
         this.add(this.back);
         
+        this.Edit = new JButton("Edit");
+        this.Edit.setForeground(Constants.fontColor);
+        this.Edit.setSize(Constants.ButtonSize);
+        this.Edit.setVisible(true);
+        this.Edit.setLocation(Constants.framex - 20 - Constants.ButtonSize.width  , Constants.framey - 40 - Constants.ButtonSize.height);
+       
+        this.add(this.Edit);
         
+    }
+    public void update(){
+        this.box.setListData(this.model.getStaffArray());
+    }
 }

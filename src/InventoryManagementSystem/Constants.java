@@ -13,7 +13,7 @@ import java.awt.Font;
  * @author Jakob
  */
 public class Constants {
-    public static final int framex = 600;
+    public static final int framex = 650;
      public static final int framey = 450;
     
     public static final Dimension ButtonSize = new Dimension(100,40);
@@ -23,7 +23,7 @@ public class Constants {
     public static final Color fontColor = Color.blue;
     public static final Color backGround = Color.white;
     public static final Color buttonColor = new Color(240,240,240);
-    public static final Dimension listBoxSize = new Dimension(200,290);
+    public static final Dimension listBoxSize = new Dimension(240,290);
     public static final Dimension textFieldSize = new Dimension(200,30);
     
 }

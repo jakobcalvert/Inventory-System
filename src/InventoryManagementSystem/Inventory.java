@@ -83,16 +83,40 @@ public class Inventory implements StringRepresentation {
 
     //adds price by weight item to the stock array
     public void addPricedByWeight(PricedByWeight item) {
-        this.serverSave.addPricedByWeight(this,  item);
+        this.serverSave.addPricedByWeight(this, item);
         this.Stock.add(item);
         Collections.sort(this.Stock);
     }
-    
+
     //adds price by unit item to the stock array
     public void addPricedByUnit(PricedByUnit item) {
-        this.serverSave.addPricedByUnit(this,  item);
+        this.serverSave.addPricedByUnit(this, item);
         this.Stock.add(item);
         Collections.sort(this.Stock);
+    }
+
+    //removes item from database
+    public void removeSave(Item newItem) {
+
+        if (newItem.getClass() == PricedByUnit.class) {
+            this.serverSave.removePricedByUnit(this, (PricedByUnit) newItem);
+            
+        } else {
+            this.serverSave.removePricedByWeight(this, (PricedByWeight) newItem);
+            
+        }
+    }
+
+    //adds item from database
+    public void addSave(Item newItem) {
+
+        if (newItem.getClass() == PricedByUnit.class) {
+
+            this.serverSave.addPricedByUnit(this, (PricedByUnit) newItem);
+        } else {
+
+            this.serverSave.addPricedByWeight(this, (PricedByWeight) newItem);
+        }
     }
 
     //removes product of certain index from the stock array

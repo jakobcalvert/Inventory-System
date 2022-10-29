@@ -37,5 +37,7 @@ abstract public class Item implements Comparable<Item>, StringRepresentation {
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    abstract public String[] getStaffArray();
+    abstract public String[] getCustomerArray();
 }

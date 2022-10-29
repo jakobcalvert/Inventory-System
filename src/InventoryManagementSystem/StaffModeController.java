@@ -77,7 +77,9 @@ public class StaffModeController {
         if (!this.panel.box.isSelectionEmpty()) {
             int index = this.panel.box.getSelectedIndex();
             Inventory store = model.getStock(index);
-            new ServerSaveFile().readItems(store);
+            if (store.Stock.isEmpty()){
+                new ServerSaveFile().readItems(store);
+            }          
             StaffProductListPanel panel = new StaffProductListPanel(store);
             StaffProductListController controller = new StaffProductListController(store, panel, this.model);
             this.panel.dispose();

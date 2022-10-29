@@ -115,7 +115,18 @@ public class StaffProductListController {
     }
 
     public void next() {
-
+        if (!this.panel.box.isSelectionEmpty()) {
+            int index = this.panel.box.getSelectedIndex();
+            Item item = model.getProduct(index);
+            StaffItemPanel panel = new StaffItemPanel(item);
+            try{
+                StaffWeightController controller = new StaffWeightController((PricedByWeight)item, panel, this.model,this.previous);
+            }catch (Exception e){
+                StaffUnitController controller = new StaffUnitController((PricedByUnit)item, panel, this.model,this.previous);
+            }
+            this.panel.dispose();
+        }
+        
     }
 
     public void add() {

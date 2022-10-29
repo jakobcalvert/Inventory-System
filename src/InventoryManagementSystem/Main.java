@@ -17,16 +17,11 @@ public class Main {
 
     public static void main(String[] args) {
         try{
-            
-             String test1= JOptionPane.showInputDialog("Please input mark for test 1: ");
-             
             ServerSaveFile save = new ServerSaveFile();
             AllStock Stock = save.readTables();
             MainMenu menu = new MainMenu(Stock);    
         } catch(Exception E){
             System.out.println("Previous instance of program has not been closed please close before proceeding ");
         }
-        
-
     }
 }
