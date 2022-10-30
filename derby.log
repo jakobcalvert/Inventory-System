@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Sun Oct 30 20:48:08 NZDT 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0184-27dc-bbe7-000007dcc600 
-on database directory /Users/Jakob/NetBeansProjects/SoftwareGUIproject/Inventory_DB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
+Sun Oct 30 21:40:18 NZDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0184-280c-7cd3-0000079694c0 
+on database directory /Users/Jakob/NetBeansProjects/SoftwareGUIproject/Inventory_DB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@355da254 
 Loaded from file:/Users/Jakob/SoftwareDatabase/db-derby-10.14.2.0-lib/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=12.0.2+10

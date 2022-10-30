@@ -15,6 +15,7 @@ import javax.swing.JTextField;
  *
  * @author Jakob
  */
+//this class creats the frame to display the list of items 
 public class StaffProductListPanel extends JFrame {
     private Inventory model;
     public JList box;
