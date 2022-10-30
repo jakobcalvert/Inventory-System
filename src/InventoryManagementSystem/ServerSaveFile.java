@@ -216,6 +216,7 @@ public class ServerSaveFile {
         sbs.closeConnection();
     }
 
+    //closes the data base connection
     public void closeConnection() {
         this.dbManager.closeConnections();
     }
