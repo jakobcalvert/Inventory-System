@@ -46,19 +46,19 @@ public class MainMenu extends JFrame {
         this.setTitle("Inventory Management System");
         
         //sets the title text
-        this.Welcome = new JLabel("Welcome to the inventory Management system",SwingConstants.CENTER);
+        this.Welcome = new JLabel("Welcome to the inventory Management system");
         this.Welcome.setFont(Constants.titleFont);
         this.Welcome.setSize(Constants.framex, 80 );
-        this.Welcome.setLocation(Constants.framex/2 - 200, 80);
+        this.Welcome.setLocation(150, 80);
         this.Welcome.setForeground(Constants.fontColor);
         //adds the titles to the frame
         this.add(this.Welcome);
         
         //sets the instructions 
-        this.Instructions = new JLabel("select a mode to get started",SwingConstants.CENTER);
+        this.Instructions = new JLabel("select a mode to get started");
         this.Instructions.setFont(Constants.titleFont);
         this.Instructions.setSize(Constants.framex, 100 );
-        this.Instructions.setLocation(Constants.framex/2 - 100, 100);
+        this.Instructions.setLocation( 210, 100);
         this.Instructions.setForeground(Constants.fontColor);
         //adds the instructions to the frame
         this.add(this.Instructions);

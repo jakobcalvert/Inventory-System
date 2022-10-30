@@ -12,14 +12,19 @@ import javax.swing.JOptionPane;
  *
  * @author Jakob
  */
+//this class is the controller for the staff item panel when it is displaying a priced by weight object
+//this class is mostly the same as the priced by unit one so for more indepth details of methods look at the unit controller
 public class StaffWeightController {
 
+    //initialises variables
     private PricedByWeight model;
     private StaffItemPanel panel;
     private Inventory previous;
     private AllStock secondPrevious;
 
+    //constructor sets all action controllers
     public StaffWeightController(PricedByWeight model, StaffItemPanel panel, Inventory previous, AllStock secondPrevious) {
+        //sets variables
         this.panel = panel;
 
         this.model = model;
@@ -28,6 +33,7 @@ public class StaffWeightController {
 
         this.secondPrevious = secondPrevious;
 
+        //adds actions listeners for buttons and maps to appropriate methods
         this.panel.back.addActionListener(new ActionListener() {
 
             @Override
@@ -44,11 +50,14 @@ public class StaffWeightController {
         });
     }
 
+    //method for back button goes back a form
     public void back() {
         StaffProductListPanel panel = new StaffProductListPanel(this.previous);
         this.panel.dispose();
         StaffProductListController controller = new StaffProductListController(this.previous, panel, this.secondPrevious);
     }
+    
+    //method for edit button edits variables
     public void Edit(){
         int index = this.panel.box.getSelectedIndex();
         switch (index){
@@ -69,6 +78,7 @@ public class StaffWeightController {
                 break;
         }
     }
+    //method to edit name
     public void EditName(){
         String name= JOptionPane.showInputDialog("Please input new name: ");
         if (name!= null) {
@@ -78,6 +88,8 @@ public class StaffWeightController {
             this.panel.update();
         }
     }
+    
+    //method to edit price
     public void EditPrice(){
         String price= JOptionPane.showInputDialog("Please input new price per KG: ");
         while (price!=null){
@@ -93,6 +105,8 @@ public class StaffWeightController {
         }
         
     }
+    
+    //method to edit amount
     public void EditAmount(){
         String amount= JOptionPane.showInputDialog("Please input new amount in KG: ");
         while (amount!=null){
@@ -107,6 +121,8 @@ public class StaffWeightController {
             }
         }
     }
+    
+    //method to edit stocking price
     public void EditStock(){
         String stock= JOptionPane.showInputDialog("Please input new stock price per KG: ");
         while (stock!=null){

@@ -42,7 +42,7 @@ public class StaffItemPanel extends JFrame {
         this.setTitle("Inventory Management System - Staff Mode");
         
         //makes title label
-        this.Title = new JLabel("View or edit item details");
+        this.Title = new JLabel("To edit item select detail you would like to change and click edit button");
         this.Title.setFont(Constants.titleFont);
         this.Title.setForeground(Constants.fontColor);
         this.Title.setSize(Constants.framex, 100 );
