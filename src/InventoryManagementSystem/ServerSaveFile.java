@@ -94,6 +94,7 @@ public class ServerSaveFile {
         }
     }
 
+    //this method adds a new store to the data base under the store table
     public void addStore(Inventory e) {
         try {
             statement.addBatch("INSERT INTO Stores VALUES ('" + e.getLocationName() + "')");
@@ -102,14 +103,19 @@ public class ServerSaveFile {
             System.out.println(ex.getMessage());
         }
     }
+    
+    //this method removes a store from the store table and all items that have their foreign key as that store
     public void removeStore(Inventory e){
         try {
+            statement.addBatch("DELETE FROM PricedByWeight WHERE Name='"+e.getLocationName() + "'");
+            statement.addBatch("DELETE FROM PricedByUnit WHERE Name='"+e.getLocationName() + "'");
             statement.addBatch("DELETE FROM Stores WHERE Name='"+e.getLocationName() + "'");
             statement.executeBatch();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
+    
     
     public void removePricedByUnit(Inventory e, PricedByUnit item){
         try {
