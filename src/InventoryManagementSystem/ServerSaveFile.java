@@ -174,16 +174,20 @@ public class ServerSaveFile {
         return returnList;
     }
 
+    //reads the priced by unit table
     public void readPricedByUnit(Inventory inv) {
 
         try {
+            //gets the results and stores in result set
             ResultSet results;
 
             results = statement.executeQuery("SELECT * "
                     + "FROM pricedbyunit where name='" + inv.getLocationName() + "'  ");
 
+            //loop through results
             while (results.next()) {
 
+                //creates new priced by unit object from each entry
                 String name = results.getString("ITEMNAME");
                 double price = Double.parseDouble(results.getString("PRICE"));
                 int amount = Integer.parseInt(results.getString("AMOUNT"));
@@ -191,6 +195,8 @@ public class ServerSaveFile {
                 double stockPrice = Double.parseDouble(results.getString("STOCKPRICE"));
 
                 PricedByUnit unit = new PricedByUnit(name, price, amount, weight, stockPrice);
+                
+                //ads object back to the list
                 inv.addProduct(unit);
             }
         } catch (SQLException ex) {
@@ -199,6 +205,7 @@ public class ServerSaveFile {
 
     }
 
+    //this method reads the priced by weight table and returns the results for the given store
     public void readPricedByWeight(Inventory inv) {
         try {
             ResultSet results;
@@ -218,13 +225,6 @@ public class ServerSaveFile {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-    }
-
-    public static void main(String[] args) throws SQLException {
-        ServerSaveFile sbs = new ServerSaveFile();
-        sbs.readStores();
-        sbs.readPricedByUnit(new Inventory("walmart"));
-        sbs.closeConnection();
     }
 
     //closes the data base connection
