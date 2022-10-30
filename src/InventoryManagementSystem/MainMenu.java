@@ -48,7 +48,6 @@ public class MainMenu extends JFrame {
         //sets the title text
         this.Welcome = new JLabel("Welcome to the inventory Management system",SwingConstants.CENTER);
         this.Welcome.setFont(Constants.titleFont);
-        this.Welcome.setVisible(true);
         this.Welcome.setSize(Constants.framex, 80 );
         this.Welcome.setLocation(Constants.framex/2 - 200, 80);
         this.Welcome.setForeground(Constants.fontColor);
@@ -58,7 +57,6 @@ public class MainMenu extends JFrame {
         //sets the instructions 
         this.Instructions = new JLabel("select a mode to get started",SwingConstants.CENTER);
         this.Instructions.setFont(Constants.titleFont);
-        this.Instructions.setVisible(true);
         this.Instructions.setSize(Constants.framex, 100 );
         this.Instructions.setLocation(Constants.framex/2 - 100, 100);
         this.Instructions.setForeground(Constants.fontColor);
@@ -69,7 +67,6 @@ public class MainMenu extends JFrame {
         this.studentMode = new JButton("Student Mode");
         this.studentMode.setForeground(Constants.fontColor);
         this.studentMode.setSize(Constants.ButtonSize);
-        this.studentMode.setVisible(true);
         this.studentMode.setLocation(((Constants.framex/2) - 130) ,((Constants.framey/2)-20) );
         //adds the button to the frame
         this.add(studentMode);
@@ -87,7 +84,6 @@ public class MainMenu extends JFrame {
         this.staffMode = new JButton("Staff Mode");
         this.staffMode.setForeground(Constants.fontColor);
         this.staffMode.setSize(Constants.ButtonSize);
-        this.staffMode.setVisible(true);
         this.staffMode.setLocation((Constants.framex/2) + 10 , (Constants.framey/2)-20);
         //adds the staffmode button to the frame
         this.add(staffMode);

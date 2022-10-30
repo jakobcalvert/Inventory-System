@@ -69,8 +69,7 @@ public class CustomerProductListPanel extends JFrame {
         this.ItemDetails.setBackground(Constants.buttonColor);
         this.ItemDetails.setListData(this.model.getStringArray());
         this.ItemDetails.setForeground(Constants.fontColor);
-        this.ItemDetailsPane = new JScrollPane();
-        this.ItemDetailsPane.getViewport().setView(this.ItemDetails);
+        this.ItemDetailsPane = new JScrollPane(this.ItemDetails);
         this.ItemDetailsPane.setVisible(false);
         this.ItemDetailsPane.setSize(Constants.listBoxSize.width, 75);
         this.ItemDetailsPane.setLocation(Constants.framex/2,60);
@@ -81,7 +80,6 @@ public class CustomerProductListPanel extends JFrame {
         this.back = new JButton("Back");
         this.back.setForeground(Constants.fontColor);
         this.back.setSize(Constants.ButtonSize);
-        this.back.setVisible(true);
         this.back.setLocation(20 , Constants.framey - 40 - Constants.ButtonSize.height);
         //adds the back button to the frame
         this.add(this.back);      

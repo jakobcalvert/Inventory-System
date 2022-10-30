@@ -40,7 +40,6 @@ public class StaffItemPanel extends JFrame {
         
         this.Title = new JLabel("View or edit item details");
         this.Title.setFont(Constants.titleFont);
-        this.Title.setVisible(true);
         this.Title.setForeground(Constants.fontColor);
         this.Title.setSize(Constants.framex, 100 );
         this.Title.setLocation(20, -20);
@@ -51,9 +50,7 @@ public class StaffItemPanel extends JFrame {
         this.box.setBackground(Constants.buttonColor);
         this.box.setListData(model.getStaffArray());
         this.box.setForeground(Constants.fontColor);
-        this.pane = new JScrollPane();
-        this.pane.getViewport().setView(this.box);
-        this.pane.setVisible(true);
+        this.pane = new JScrollPane(this.box);
         this.pane.setSize(Constants.listBoxSize);
         this.pane.setLocation(20,60);      
 
@@ -62,7 +59,6 @@ public class StaffItemPanel extends JFrame {
         this.back = new JButton("Back");
         this.back.setForeground(Constants.fontColor);
         this.back.setSize(Constants.ButtonSize);
-        this.back.setVisible(true);
         this.back.setLocation(20 , Constants.framey - 40 - Constants.ButtonSize.height);
        
         this.add(this.back);
@@ -70,7 +66,6 @@ public class StaffItemPanel extends JFrame {
         this.Edit = new JButton("Edit");
         this.Edit.setForeground(Constants.fontColor);
         this.Edit.setSize(Constants.ButtonSize);
-        this.Edit.setVisible(true);
         this.Edit.setLocation(Constants.framex - 20 - Constants.ButtonSize.width  , Constants.framey - 40 - Constants.ButtonSize.height);
        
         this.add(this.Edit);
