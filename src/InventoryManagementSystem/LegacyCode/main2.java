@@ -6,7 +6,6 @@ package InventoryManagementSystem.LegacyCode;
 
 import InventoryManagementSystem.AllStock;
 import InventoryManagementSystem.LegacyCode.StaffMode;
-import InventoryManagementSystem.SaveToFile;
 import java.util.Scanner;
 
 /**
