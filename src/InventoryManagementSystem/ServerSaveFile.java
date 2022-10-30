@@ -103,56 +103,66 @@ public class ServerSaveFile {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     //this method removes a store from the store table and all items that have their foreign key as that store
-    public void removeStore(Inventory e){
+    public void removeStore(Inventory e) {
         try {
-            statement.addBatch("DELETE FROM PricedByWeight WHERE Name='"+e.getLocationName() + "'");
-            statement.addBatch("DELETE FROM PricedByUnit WHERE Name='"+e.getLocationName() + "'");
-            statement.addBatch("DELETE FROM Stores WHERE Name='"+e.getLocationName() + "'");
-            statement.executeBatch();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    
-    public void removePricedByUnit(Inventory e, PricedByUnit item){
-        try {
-            statement.addBatch("DELETE FROM PricedByUnit WHERE Name='"+e.getLocationName() + "' and itemName = '"+item.getName()+"'");
-            statement.executeBatch();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-     public void removePricedByWeight(Inventory e, PricedByWeight item){
-        try {
-            statement.addBatch("DELETE FROM PricedByweight WHERE Name='"+e.getLocationName() + "' and itemName = '"+item.getName()+"'");
+            statement.addBatch("DELETE FROM PricedByWeight WHERE Name='" + e.getLocationName() + "'");
+            statement.addBatch("DELETE FROM PricedByUnit WHERE Name='" + e.getLocationName() + "'");
+            statement.addBatch("DELETE FROM Stores WHERE Name='" + e.getLocationName() + "'");
             statement.executeBatch();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
+    //removes the priced by unit with the corresponing name
+    public void removePricedByUnit(Inventory e, PricedByUnit item) {
+        try {
+            statement.addBatch("DELETE FROM PricedByUnit WHERE Name='" + e.getLocationName() + "' and itemName = '" + item.getName() + "'");
+            statement.executeBatch();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    //removes the priced by unit with the corresponing name
+    public void removePricedByWeight(Inventory e, PricedByWeight item) {
+        try {
+            statement.addBatch("DELETE FROM PricedByweight WHERE Name='" + e.getLocationName() + "' and itemName = '" + item.getName() + "'");
+            statement.executeBatch();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    //reads the store tables
     public AllStock readTables() {
         ArrayList<Inventory> stores = readStores();
         return new AllStock(stores);
     }
+
+    //reads the items for a certain store
     public void readItems(Inventory e) {
         readPricedByUnit(e);
         readPricedByWeight(e);
     }
 
+    //reads the stores from the stores table
     public ArrayList<Inventory> readStores() {
+        //creats new list and results set
         ArrayList<Inventory> returnList = new ArrayList<>();
         try {
             ResultSet results;
 
+            //gets all stores from the table
             results = statement.executeQuery("SELECT * "
                     + "FROM Stores ");
 
+            //loops through results
             while (results.next()) {
 
+                //gets the name and adds it to the list
                 String name = results.getString("NAME");
 
                 returnList.add(new Inventory(name));
@@ -160,6 +170,7 @@ public class ServerSaveFile {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        //returns the list
         return returnList;
     }
 
@@ -172,7 +183,7 @@ public class ServerSaveFile {
                     + "FROM pricedbyunit where name='" + inv.getLocationName() + "'  ");
 
             while (results.next()) {
-                
+
                 String name = results.getString("ITEMNAME");
                 double price = Double.parseDouble(results.getString("PRICE"));
                 int amount = Integer.parseInt(results.getString("AMOUNT"));
