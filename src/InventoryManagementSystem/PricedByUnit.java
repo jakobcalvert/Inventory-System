@@ -23,20 +23,6 @@ public class PricedByUnit extends Item {
     //stores the price to restock the product
     private double stockPrice;
 
-    //returns a array representation of the item for the staff
-    @Override
-    public String[] getStaffArray() {
-        String[] returnString = {"Name: " + this.name, "Price: " + this.price + "$", "Amount: " + this.amount, "Stocking Price: " + this.stockPrice + "$", "Weight: " + this.weight + "KG"};
-        return returnString;
-    }
-
-    //returns a array representation of the item for the customer
-    @Override
-    public String[] getCustomerArray() {
-        String[] returnString = {"Name: " + this.name, "Price: " + this.price + "$", "Amount: " + this.amount, "Weight: " + this.weight + "KG"};
-        return returnString;
-    }
-
     //basic constructor with amount set to 0
     public PricedByUnit(String name, double price, double weight, double stockPrice) {
         super(name);
@@ -158,6 +144,21 @@ public class PricedByUnit extends Item {
         if (amount > 0) {
             this.amount += amount;
         }
+    }
+    
+    
+    //returns a array representation of the item for the staff
+    @Override
+    public String[] getStaffArray() {
+        String[] returnString = {"Name: " + this.name, "Price: " + this.price + "$", "Amount: " + this.amount, "Stocking Price: " + this.stockPrice + "$", "Weight: " + this.weight + "KG"};
+        return returnString;
+    }
+
+    //returns a array representation of the item for the customer
+    @Override
+    public String[] getCustomerArray() {
+        String[] returnString = {"Name: " + this.name, "Price: " + this.price + "$", "Amount: " + this.amount, "Weight: " + this.weight + "KG"};
+        return returnString;
     }
 
 }

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author Jakob
  */
+//controller for the staff mode panel frame
 public class StaffModeController {
 
     private AllStock model;
