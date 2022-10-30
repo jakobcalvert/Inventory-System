@@ -46,7 +46,7 @@ public class StaffModePanel extends JFrame {
         this.setTitle("Inventory Management System - Staff Mode");
         
         //sets the title
-        this.Title = new JLabel("Select a store to view inventory");
+        this.Title = new JLabel("Select a store to view inventory or add a store");
         this.Title.setFont(Constants.titleFont);
         this.Title.setForeground(Constants.fontColor);
         this.Title.setSize(Constants.framex, 100 );

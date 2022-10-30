@@ -38,7 +38,7 @@ public class DataBaseManager {
                 conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
                 
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+             
             }
         }
     }
@@ -49,7 +49,7 @@ public class DataBaseManager {
             try {
                 conn.close();
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+     
             }
         }
     }

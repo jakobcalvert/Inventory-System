@@ -42,7 +42,7 @@ public class CustomerProductListPanel extends JFrame {
         this.setTitle("Inventory Management System - Customer Mode");
         
         //sets the title 
-        this.Title = new JLabel("Select a Item to view details");
+        this.Title = new JLabel("Select a Item to view details or buy item");
         this.Title.setFont(Constants.titleFont);
         this.Title.setVisible(true);
         this.Title.setForeground(Constants.fontColor);

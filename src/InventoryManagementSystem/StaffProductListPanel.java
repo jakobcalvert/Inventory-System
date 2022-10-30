@@ -52,7 +52,7 @@ public class StaffProductListPanel extends JFrame {
         this.setTitle("Inventory Management System - Staff Mode");
 
         //sets the title
-        this.Title = new JLabel("Select a Item to view details about item and edit");
+        this.Title = new JLabel("Select a Item to view details about item and edit / add or remove a item");
         this.Title.setFont(Constants.titleFont);
         this.Title.setForeground(Constants.fontColor);
         this.Title.setSize(Constants.framex, 100);
@@ -115,8 +115,7 @@ public class StaffProductListPanel extends JFrame {
         this.add(this.remove);
 
         //sets the price text field
-        this.price = new JTextField();
-        this.price.setText("Enter the price");
+        this.price = new JTextField("Enter the price");
         this.price.setSize(Constants.textFieldSize);
         this.price.setLocation(Constants.framex / 2, 120);
         this.price.setBackground(Constants.buttonColor);
@@ -125,8 +124,7 @@ public class StaffProductListPanel extends JFrame {
         this.add(this.price);
 
         //sets the weight text field
-        this.weight = new JTextField();
-        this.weight.setText("Enter the weight");
+        this.weight = new JTextField("Enter the weight");
         this.weight.setSize(Constants.textFieldSize);
         this.weight.setLocation(Constants.framex / 2, 150);
         this.weight.setForeground(Constants.fontColor);
@@ -135,8 +133,7 @@ public class StaffProductListPanel extends JFrame {
         this.add(this.weight);
 
         //sets the stocking price text field
-        this.stockingprice = new JTextField();
-        this.stockingprice.setText("Enter the stocking price");
+        this.stockingprice = new JTextField("Enter the stocking price");
         this.stockingprice.setSize(Constants.textFieldSize);
         this.stockingprice.setLocation(Constants.framex / 2, 180);
         this.stockingprice.setForeground(Constants.fontColor);
@@ -184,7 +181,7 @@ public class StaffProductListPanel extends JFrame {
 
     //method to update the list box
     public void update() {
-        this.box.setListData(this.model.getStringArray());
+        this.box.setListData(this.model.getStringArray());        
     }
 
 }

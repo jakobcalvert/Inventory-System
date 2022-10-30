@@ -29,7 +29,7 @@ public class ServerSaveFile {
         try {
             statement = conn.createStatement();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+       
         }
 
     }
@@ -70,7 +70,7 @@ public class ServerSaveFile {
             statement.executeBatch();
 
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+        
         }
     }
 
@@ -80,7 +80,7 @@ public class ServerSaveFile {
             statement.addBatch("INSERT INTO pricedbyunit VALUES ('" + item.getAmount() + "', '" + item.getStockPrice() + "', '" + item.getPrice() + "', '" + item.getWeight() + "', '" + item.getName() + "', '" + e.getLocationName() + "')");
             statement.executeBatch();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+
         }
     }
 
@@ -90,7 +90,7 @@ public class ServerSaveFile {
             statement.addBatch("INSERT INTO pricedbyweight VALUES ('" + item.getAmountKg() + "', '" + item.getStockPrice() + "', '" + item.getPricePerKg() + "', '" + item.getName() + "', '" + e.getLocationName() + "')");
             statement.executeBatch();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+      
         }
     }
 
@@ -100,7 +100,7 @@ public class ServerSaveFile {
             statement.addBatch("INSERT INTO Stores VALUES ('" + e.getLocationName() + "')");
             statement.executeBatch();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+        
         }
     }
 
@@ -112,7 +112,7 @@ public class ServerSaveFile {
             statement.addBatch("DELETE FROM Stores WHERE Name='" + e.getLocationName() + "'");
             statement.executeBatch();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+      
         }
     }
 
@@ -122,7 +122,7 @@ public class ServerSaveFile {
             statement.addBatch("DELETE FROM PricedByUnit WHERE Name='" + e.getLocationName() + "' and itemName = '" + item.getName() + "'");
             statement.executeBatch();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+         
         }
     }
 
@@ -132,7 +132,7 @@ public class ServerSaveFile {
             statement.addBatch("DELETE FROM PricedByweight WHERE Name='" + e.getLocationName() + "' and itemName = '" + item.getName() + "'");
             statement.executeBatch();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+          
         }
     }
 
@@ -168,7 +168,7 @@ public class ServerSaveFile {
                 returnList.add(new Inventory(name));
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           
         }
         //returns the list
         return returnList;
@@ -200,7 +200,7 @@ public class ServerSaveFile {
                 inv.addProduct(unit);
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           
         }
 
     }
@@ -223,7 +223,7 @@ public class ServerSaveFile {
                 inv.addProduct(add);
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           
         }
     }
 
